@@ -1,0 +1,16 @@
+.complete p {
+  text-decoration: line-through;
+  opacity: .5;
+}
+.notComplete img {
+  opacity: 0;
+}
+div {
+  position: relative;
+}
+img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 0;
+}
