@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/todo-app/static/css/main.aa76f5fc.chunk.css",
+    "main.js": "/todo-app/static/js/main.4b8374f4.chunk.js",
+    "main.js.map": "/todo-app/static/js/main.4b8374f4.chunk.js.map",
+    "runtime-main.js": "/todo-app/static/js/runtime-main.4fdb537a.js",
+    "runtime-main.js.map": "/todo-app/static/js/runtime-main.4fdb537a.js.map",
+    "static/js/2.0e731690.chunk.js": "/todo-app/static/js/2.0e731690.chunk.js",
+    "static/js/2.0e731690.chunk.js.map": "/todo-app/static/js/2.0e731690.chunk.js.map",
+    "index.html": "/todo-app/index.html",
+    "precache-manifest.752b247b35a4c08774098fdeea1cea0f.js": "/todo-app/precache-manifest.752b247b35a4c08774098fdeea1cea0f.js",
+    "service-worker.js": "/todo-app/service-worker.js",
+    "static/css/main.aa76f5fc.chunk.css.map": "/todo-app/static/css/main.aa76f5fc.chunk.css.map",
+    "static/js/2.0e731690.chunk.js.LICENSE.txt": "/todo-app/static/js/2.0e731690.chunk.js.LICENSE.txt",
+    "static/media/double-check.svg": "/todo-app/static/media/double-check.734994c1.svg",
+    "static/media/tick-1.svg": "/todo-app/static/media/tick-1.4e8fb437.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4fdb537a.js",
+    "static/js/2.0e731690.chunk.js",
+    "static/css/main.aa76f5fc.chunk.css",
+    "static/js/main.4b8374f4.chunk.js"
+  ]
+}
