@@ -25,7 +25,7 @@ div button:nth-child(3) {
   outline: none;
 
 }
-div button:nth-child(3):hover img {
+div:hover > button:nth-child(3) img {
   display: block;
 }
 div button:nth-child(3) img {
