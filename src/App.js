@@ -1,29 +1,30 @@
 import React, {Component} from 'react';
 import ToDo from './components/ToDo';
+import Footer from './components/Footer';
 import './App.css';
 import doubleCheck from './img/double-check.svg';
 
+let toDoList = JSON.parse(localStorage.getItem('toDoList')) || [];
+let setItem = (list) => {
+  list = JSON.stringify(list);
+  localStorage.setItem('toDoList', list);
+}
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      toDoList: [
-      {text: 'Wakeup', isComplete: true},
-      {text: 'Play Game', isComplete: false},
-      {text: 'Study', isComplete: true},
-      {text: 'Sleep', isComplete: true}],
-      currentView: 'All'
+      toDoList: toDoList
     }
+    this.onClear = this.onClear.bind(this);
     this.eventClick = this.eventClick.bind(this);
+    this.eventDelete = this.eventDelete.bind(this);
     this.eventEnter = this.eventEnter.bind(this);
     this.eventTickAll = this.eventTickAll.bind(this);
-    // this.eventChangePage = this.eventChangePage.bind(this);
     this.allDone = '';
-    this.toDoList = this.state.toDoList;
     this.isActive = 'active';
   }
-  
+
   eventClick(item, index) {
     
     return () => {
@@ -32,6 +33,7 @@ class App extends Component {
         this.setState({
           toDoList: doList
         })
+        setItem(doList);
         if (doList[index].isComplete == false) {
           this.allDone = '';
         }
@@ -43,11 +45,37 @@ class App extends Component {
         this.allDone = 'allDone';
     }
   }
+
+  eventDelete(item, index) {
+    return () => {
+      let doList = this.state.toDoList;
+      let newList = [];
+      for (var i in doList) {
+        if(i != index) {
+          newList.push(doList[i]);
+        }
+      }
+
+      this.setState({
+        toDoList: newList
+      })
+      setItem(newList);
+      for (let i of newList) {
+        if (i.isComplete == false) {
+          this.allDone = '';
+          return;
+        }
+      }
+      this.allDone = 'allDone';
+    }
+  }
+
   eventEnter(event) {
     if (event.key == 'Enter') {
       let toDoList = this.state.toDoList;
       toDoList.push({text: event.target.value, isComplete: false});
       this.setState({toDoList});
+      setItem(toDoList);
       event.target.value = '';
       this.allDone = '';
     }
@@ -55,11 +83,28 @@ class App extends Component {
 
   eventTickAll() {
     let toDoList = this.state.toDoList;
+    if(toDoList.length == 0) {
+      this.allDone = '';
+      return;
+    }
     for (let i of toDoList) {
       i.isComplete = true;
     }
-    this.setState({toDoList})
+    this.setState({toDoList});
+    setItem(toDoList);
     this.allDone = 'allDone';
+  }
+
+  onClear() {
+    let toDoList = [];
+    for(let i of this.state.toDoList) {
+      if(i.isComplete === false) {
+        toDoList.push(i)
+      } 
+    }
+    this.setState({toDoList});
+    setItem(toDoList);
+    this.allDone = '';
   }
   
   render () {
@@ -75,13 +120,18 @@ class App extends Component {
               placeholder="New Todo"
               onKeyUp={this.eventEnter}/>
           </div>
-          {this.toDoList.map((item, index) => {
+          {this.state.toDoList.map((item, index) => {
             return (<ToDo
               toDo={item}
               key={index}
-              onClick={this.eventClick(item, index)}/>)
+              onClick={this.eventClick(item, index)}
+              onDelete={this.eventDelete(item, index)}/>)
           })}
+          
         </div>
+        <Footer 
+            toDo={this.state.toDoList}
+            onClick={this.onClear}/>
       </div>
     );
   }

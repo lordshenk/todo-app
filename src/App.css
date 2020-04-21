@@ -8,10 +8,11 @@
   text-align: center;
   padding: 0 20px;
   margin: 40px auto 0;
-  width: 40%;
+  width: 45%;
+  border-top: 20px solid white;
   height: 350px;
   overflow-y: auto;
-  border: 1px solid #aaa5;
+  box-sizing: border-box;
   border-radius: 30px;
   box-shadow: 0px 7px 29px -6px rgba(0,0,0,0.63);
 }
@@ -30,9 +31,6 @@ h1 {
 .App p {
   padding:0 0 5px;
   border-bottom: 1px solid #aaa5;
-}
-.header {
-  margin: 20px 0 0;
 }
 .header input {
   width: 80%;

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './style.css';
-//import tick from '../img/tick.svg';
 import tickDone from '../img/tick-1.svg';
+import cross from '../img/cross.svg';
 
 
 class ToDo extends Component {
@@ -18,9 +18,11 @@ class ToDo extends Component {
     return (
       <div className={className}>
         <img src={tickDone}/>
-        <p onClick={this.props.onClick}>
+        <p 
+          onClick={this.props.onClick}>
         {this.props.toDo.text}
         </p>
+        <button onClick={this.props.onDelete}><img src={cross}/></button>
       </div>
       );
   }
