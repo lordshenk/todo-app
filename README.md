@@ -1,3 +1,5 @@
-## First project with React
+# First project with React
 
-https://s9mple.github.io/todo-app/
+### Use HTML, CSS, REACT
+
+https://lordshenk.github.io/todo-app/
